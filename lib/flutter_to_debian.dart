@@ -185,20 +185,6 @@ class FlutterToDebian {
 
     final String preInstScript = '''
 #!/bin/bash
-echo "\n⚠️  ⚠️  ⚠️  Warning!"
-echo "\nThe creator of a debian package has 100% access to every parts of the system it's installed"
-echo "\nMaintainer: ${debianControl.maintainer}"
-echo "\nDescription: ${debianControl.description}"
-
-echo "\nSure you want to proceed with the installation of this package (yes/no) ?:"
-read choice
-
-if [[ "\$choice" != "yes" ]]; then
-  #pwd # /home/user/foo
-  exit 1
-else
-  echo "proceeding..."
-fi
 ''';
 
     File preinstFile = File(
@@ -212,7 +198,7 @@ fi
       await preinstFile.create();
     }
 
-   // await preinstFile.writeAsString(preInstScript);
+    await preinstFile.writeAsString(preInstScript);
     final ProcessResult result = await Process.run(
       "sudo",
       [
