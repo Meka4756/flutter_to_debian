@@ -212,7 +212,7 @@ fi
       await preinstFile.create();
     }
 
-    await preinstFile.writeAsString(preInstScript);
+   // await preinstFile.writeAsString(preInstScript);
     final ProcessResult result = await Process.run(
       "sudo",
       [
